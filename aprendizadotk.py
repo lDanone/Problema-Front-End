@@ -1,20 +1,19 @@
 # O Meu objetivo é conseguir criar TXT's usando tkinter, pois vou aprender mais sobre funções e parametros
 
-enc = 'UTF-8'
-from tkinter import *
-from ferramentas import *
-#Propiedades Janela principal
+from tkinter import Tk, Button, Entry, Label 
+from ferramentas import criausers
+
+#Propriedades Janela principal
 janelaPrincipal = Tk()
 janelaPrincipal.geometry("450x400")
 janelaPrincipal.title("Janela Principal")
 janelaPrincipal["bg"] = ("gray")
 
-variavelTeste = 0 # Crio uma variavel para poder atribuir o valor do entry "valorPastas" referido logo a função abaixo
-def peganumero(valorPastas): # Função para receber um numero, ja que no Button o Command=função(Não da pra colocar parametro, pois com parenteses ele executa a função assim que lê)
-    variavelTeste = valorPastas
-    criausers(variavelTeste)
-
 def janelaAdiciona(): # Janela para o recebimento do valor da criação dos TXT
+
+    def peganumero(): # Função para receber um numero, ja que no Button o Command=função(Não da pra colocar parametro, pois com parenteses ele executa a função assim que lê)
+        criausers(int(valorPastas.get())) # A função get() pega o texto do objeto valorPastas
+
     #propiedades da janela secundaria
     janelaAdciona = Tk()
     janelaAdciona.geometry("450x600")
@@ -29,7 +28,7 @@ def janelaAdiciona(): # Janela para o recebimento do valor da criação dos TXT
     valorPastas = Entry(janelaAdciona,font="arial")
     valorPastas.place(x=100,y=150)
     #Buttons
-    criaPastas = Button(janelaAdciona,font="arial",text="Adicionar Usuarios",height='2',command=peganumero)
+    criaPastas = Button(janelaAdciona,font="arial",text="Adicionar Usuarios",height='2', command=peganumero)
     criaPastas.place(x=120,y=210)
 
     janelaAdciona.mainloop()
